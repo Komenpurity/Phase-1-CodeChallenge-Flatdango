@@ -39,6 +39,7 @@ function dataId(id){
     .then(data => {
        // console.log(data)
         firstMovieDetails(data) 
+        availableTickets(data)
     })
 }
 dataId(1) 
@@ -48,6 +49,9 @@ const poster = document.getElementById("poster")
 const runtime = document.getElementById("runtime")
 const showtime = document.getElementById("showtime")
 const tickets = document.getElementById("tickets")
+const ticketsRemaining = document.getElementById("available-tickets")
+const availableButton = document.getElementById("available") 
+const rem = document.getElementById("remaining-tickets")
 
 function firstMovieDetails(data){
     title.innerText = data.title
@@ -60,3 +64,23 @@ function firstMovieDetails(data){
 
     tickets.innerHTML = "Tickets Available are: " + ticketsAvailable
 }
+
+
+//available tickets functionality
+function availableTickets(data){
+    ticketsRemaining.addEventListener("click",(event) => {
+        event.preventDefault()
+        let available = data.capacity - data.tickets_sold
+           
+        if(available > 0){
+            rem.innerHTML = `Available tickets are: ${available} `
+        } else {
+            rem.innerHTML = "Sold out!" 
+        }
+
+        availableButton.appendChild(rem) 
+    })
+
+
+}
+availableTickets() 
