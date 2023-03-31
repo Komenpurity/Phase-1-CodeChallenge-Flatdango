@@ -26,12 +26,12 @@ let movieDetails = document.getElementById("movie-menu")
 function menuMovieDetails(data){
     data.forEach(movie => {
          movieDetails.innerHTML += `
-        <ul data-id = ${movie.id} id="films"> 
-            <img  >${movie.poster}</img> 
+        <ul class="card" data-id = ${movie.id} id="films"> 
+            <img  class="card-img-top">${movie.poster}</img> 
             <h5 class="card-title">${movie.title}</h5> 
             <li class="card-text">${movie.runtime}</li>   
-            <li>${movie.showtime}</li> 
-            <li>${movie.title}</li> 
+            <li class="card-text">${movie.showtime}</li> 
+            <li class="card-text">${movie.title}</li> 
            </ul>
            `
         let display = document.getElementById("films") 
