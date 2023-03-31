@@ -10,16 +10,35 @@
 </head>
 <body>
     <div class="container">
-        <h4 class="display-4">FlatDango</h2>
-            
-        <div id="movie-details">
-            
+        <h4 class="display-4 d-flex justify-content-center">FlatDango</h2>
+        <div class="row" >
+
+            <div id="movie-menu" class="col-sm-6">
+                <h5 class = "display-5">All Movie Details</h5>
+            </div>
+
+        <div id="movie-details" class="col-sm-6">
+            <!-- poster, title, runtime,showtime, and available tickets -->
+            <div class="card mb-3" style="max-width: 650px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="..." id="poster" class="card-img" >
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title" id="title">Title</h5>
+                      <p class="card-text" id="runtime"> Runtime </p>
+                      <p class="card-text" id="showtime"> </p>
+                      <p class="card-text" id="tickets"><small class="text-muted"> Available tickets: </small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
         </div>
 
-        <div id="movie-menu">
-
+        
         </div>
-
       </div>
 
       <script src="./src/index.js" defer ></script> 
