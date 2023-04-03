@@ -14,11 +14,11 @@ function menuMovieDetails(data){
     data.forEach(movie => {
          movieDetails.innerHTML += `
         <ul class="card"  data-id = ${movie.id} id="films"> 
-            <img  class="card-img-top">${movie.poster}</img> 
             <h5 class="card-title">${movie.title}</h5> 
+            <!-- <img  class="card-img-top">${movie.poster}</img>  
             <li class="card-text">${movie.runtime}</li>   
             <li class="card-text">${movie.showtime}</li> 
-            <li class="card-text">${movie.title}</li> 
+            <li class="card-text">${movie.title}</li>  -->
            </ul>
            `
         let display = document.getElementById("films") 
@@ -31,8 +31,6 @@ function menuMovieDetails(data){
  
 
 //display only first movie details
-
-
 function dataId(id){
     fetch(`http://localhost:3000/films/${id}`) 
     .then((response) => response.json())
@@ -84,3 +82,14 @@ function availableTickets(data){
 
 }
 availableTickets() 
+
+
+
+
+/* // Click on a movie in the menu to replace the currently displayed movie's details with the new movie's details
+function clickedMovieMenu(){
+    movieDetails.addEventListener('click', (event) => {
+        event.preventDefault()
+        console.log("clicked")
+    })
+} */
