@@ -1,3 +1,13 @@
+const title = document.getElementById("title")
+const poster = document.getElementById("poster")
+const runtime = document.getElementById("runtime")
+const showtime = document.getElementById("showtime")
+const tickets = document.getElementById("tickets")
+const ticketsRemaining = document.getElementById("available-tickets")
+const availableButton = document.getElementById("available") 
+const rem = document.getElementById("remaining-tickets")
+
+
 document.addEventListener("DOMContentLoaded",() => {
     fetch("http://localhost:3000/films")
     .then((response) => response.json())
@@ -14,24 +24,31 @@ let details = document.getElementById("movie-details")
 //display all menu movie details 
 function menuMovieDetails(data){
     data.forEach(movie => {
-         movieDetails.innerHTML += `
+        /*  movieDetails.innerHTML += `
         <ul data-id = ${movie.id} id="films"> 
             <li id= "film-item" > <a id= "tag" >${movie.title}</a> </li>
         </ul>
            `
-        let display = document.getElementById("films") 
-        movieDetails.append(display) 
-        // console.log(movieDetails); 
+ */
+          let ul = document.createElement("ul")
+          let li = document.createElement("li")
+          ul.setAttribute("data-id", movie.id)
+          li.innerText = movie.title
+
+          ul.appendChild(li) 
+          movieDetails.appendChild(ul)
+
+          li.addEventListener("click", () => {
+             // console.log("click")
+            // movieDetails.innerHTML = ""
+             title.innerText = movie.title
+                poster.setAttribute("src",movie.poster)
+                runtime.innerText = "Show Runtime: " + movie.runtime
+                showtime.innerText = "Showtime: " + movie.showtime
+          })
     }); 
 
-    /* let aTag = document.getElementById("tag") 
-
-    aTag.addEventListener("click",(event) => {
-        event.preventDefault()
-        console.log("clicked") 
-        details.innerHTML = ""
-        clickedMovieMenu(data) 
-    }) */
+    
    
 }
  
@@ -48,14 +65,7 @@ function dataId(id){
 }
 dataId(1) 
 
-const title = document.getElementById("title")
-const poster = document.getElementById("poster")
-const runtime = document.getElementById("runtime")
-const showtime = document.getElementById("showtime")
-const tickets = document.getElementById("tickets")
-const ticketsRemaining = document.getElementById("available-tickets")
-const availableButton = document.getElementById("available") 
-const rem = document.getElementById("remaining-tickets")
+
 
 function firstMovieDetails(data){
     title.innerText = data.title
