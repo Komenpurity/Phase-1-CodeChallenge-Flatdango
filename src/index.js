@@ -8,25 +8,31 @@ document.addEventListener("DOMContentLoaded",() => {
 })
 
 let movieDetails = document.getElementById("movie-menu") 
+let details = document.getElementById("movie-details") 
+
 
 //display all menu movie details 
 function menuMovieDetails(data){
     data.forEach(movie => {
          movieDetails.innerHTML += `
-        <ul class="card"  data-id = ${movie.id} id="films"> 
-            <h5 class="card-title">${movie.title}</h5> 
-            <!-- <img  class="card-img-top">${movie.poster}</img>  
-            <li class="card-text">${movie.runtime}</li>   
-            <li class="card-text">${movie.showtime}</li> 
-            <li class="card-text">${movie.title}</li>  -->
-           </ul>
+        <ul data-id = ${movie.id} id="films"> 
+            <li id= "film-item" > <a id= "tag" >${movie.title}</a> </li>
+        </ul>
            `
         let display = document.getElementById("films") 
         movieDetails.append(display) 
         // console.log(movieDetails); 
     }); 
 
-    
+    /* let aTag = document.getElementById("tag") 
+
+    aTag.addEventListener("click",(event) => {
+        event.preventDefault()
+        console.log("clicked") 
+        details.innerHTML = ""
+        clickedMovieMenu(data) 
+    }) */
+   
 }
  
 
@@ -58,7 +64,7 @@ function firstMovieDetails(data){
     showtime.innerText = "Showtime: " + data.showtime
 
     let ticketsAvailable = data.capacity - data.tickets_sold
-    console.log(ticketsAvailable)
+   // console.log(ticketsAvailable)
 
     tickets.innerHTML = "Tickets Available are: " + ticketsAvailable
 }
@@ -86,10 +92,8 @@ availableTickets()
 
 
 
-/* // Click on a movie in the menu to replace the currently displayed movie's details with the new movie's details
-function clickedMovieMenu(){
-    movieDetails.addEventListener('click', (event) => {
-        event.preventDefault()
-        console.log("clicked")
-    })
+// Click on a movie in the menu to replace the currently displayed movie's details with the new movie's details
+/* function clickedMovieMenu(data){
+    console.log(data)
 } */
+
